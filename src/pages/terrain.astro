@@ -1,0 +1,26 @@
+---
+import Layout from '../components/ThreeDemoLayout.astro'
+
+---
+
+<style>
+  body {
+    margin: 0;
+  }
+
+  #container {
+    width: 100vw;
+    height: 100vh;
+  }
+
+  canvas {
+    display: block;
+  }
+</style>
+
+<Layout title="Terrain">
+  <script src="../scripts/demos/00-terrain/terrain-demo.ts"></script>
+  <main>
+    <div id="container"></div>
+  </main>
+</Layout>
