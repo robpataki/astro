@@ -1,25 +1,44 @@
 ---
 import '../styles/global.scss'
-import '../styles/threejs-demo.scss'
+
+import DemoHeader from '@components/DemoHeader.astro';
 
 export interface Props {
   title: string,
+  description: string
 }
 
-const { title } = Astro.props
+const { title, description } = Astro.props
 ---
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
 
-  <body>    
-    <slot />
+  <body>
+    <DemoHeader title={title} />
+    <main>
+      <div id="container"></div>
+      <slot />
+    </main>
   </body>
 </html>
+
+<style lang="scss">
+  #container {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  canvas {
+    display: block;
+  }
+</style>

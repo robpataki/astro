@@ -1,0 +1,16 @@
+---
+import Layout from '@layouts/Layout.astro'
+
+const title = "Three.js demos"
+---
+
+<Layout title={title} description={title}>
+  <main>
+    <h1 id="heading">{title}</h1>
+    <ul aria-labelledby="heading">
+      <li><a href="/demos/terrain">Terrain</a></li>
+      <li><a href="/demos/sinus-wave">Sinus wave</a></li>
+      <li><a href="/demos/playground">Playground</a></li>
+    </ul>
+  </main>
+</Layout>

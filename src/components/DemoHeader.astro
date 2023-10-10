@@ -1,0 +1,45 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+
+import BackArrow from '@components/BackArrow.astro';
+
+interface Props extends HTMLAttributes<'header'> {
+  children: any
+  title: string
+}
+
+const { title } = Astro.props
+---
+
+<header>
+  <a href="/demos"><BackArrow />Back</a>
+  <span>{title}</span>
+</header>
+
+<style lang="scss">
+  @use '../styles/mixins/medias.scss' as *;
+
+  header {
+    position: absolute;
+    width: 100%;
+    display: grid;
+    background: rgb(0 0 0 / 100%);
+    padding: 1rem;
+    color: rgb(255 255 255 / 100%);
+    z-index: 1;
+    border-bottom: 1px solid rgb(255 255 255 / 20%);
+  }
+
+  a, span {
+    grid-column-start: 1;
+    grid-row-start: 1;
+  }
+
+  a {
+    justify-self: left;
+  }
+
+  span {
+    justify-self: center;
+  }
+</style>
