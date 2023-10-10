@@ -2,6 +2,7 @@
   "name": "threejs-astro-demos",
   "type": "module",
   "version": "0.0.1",
+  "packageManager": "pnpm@8.7.5",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "dev": "astro dev",
@@ -18,8 +19,8 @@
   "devDependencies": {
     "@types/three": "^0.156.0",
     "autoprefixer": "^10.4.16",
-    "prettier": "^2.8.8",
-    "prettier-plugin-astro": "^0.8.1",
+    "prettier": "^3.0.3",
+    "prettier-plugin-astro": "^0.12.0",
     "ress": "^5.0.2",
     "sass": "^1.69.0",
     "vite-plugin-glsl": "^1.1.2"
