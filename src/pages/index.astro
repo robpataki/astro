@@ -1,25 +1,14 @@
 ---
-import Layout from '../components/Layout.astro'
+import Layout from '@layouts/Layout.astro'
 
-import { getCollection } from 'astro:content'
+/* import { getCollection } from 'astro:content'
 const demos = (await getCollection('demos')).sort(
   (a: any, b: any) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-);
+); */
 ---
 
 <Layout title="List of demos">
   <main>
-    
-    {demos && demos.length > 0 ? demos.map((demo: any) => (
-      <ul>
-        <li>
-          <article>
-            <a href={`/demos/${demo.slug}/`}>
-              {demo.data.title}
-            </a>
-          </article>
-          </li>
-      </ul>
-    )) : null}
+    Hello world
   </main>
 </Layout>

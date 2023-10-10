@@ -14,7 +14,15 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@layouts/*": [ "src/layouts/*" ],
+      "@components/*": [ "src/components/*" ],
+      "@styles/*": [ "src/styles/*" ],
+      "@scripts/*": [ "src/scripts/*" ],
+      "@types/*": [ "src/types/*" ]
+    },
   },
   "extends": "astro/tsconfigs/base"
 }
