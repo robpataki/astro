@@ -4,7 +4,7 @@ import glsl from 'vite-plugin-glsl';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://robpataki.github.io',
-  base: '/',
+  base: '/threejs-astro-demos',
   server: {
     host: true,
   },
