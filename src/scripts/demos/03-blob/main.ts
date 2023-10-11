@@ -58,7 +58,7 @@ export default class Playground {
   }
 
   addObjects() {
-    const geometry = new THREE.SphereGeometry(20, 40, 40);
+    const geometry = new THREE.SphereGeometry(20, 100, 100);
     const material = new THREE.ShaderMaterial({
       wireframe: true,
       uniforms: this.uniformData,
@@ -72,7 +72,7 @@ export default class Playground {
 
           result = vec4(
             position.x,
-            4.0*sin(position.x/4.0 + u_time * 5.) + position.y,
+            4.0*sin(position.z/4.0 + u_time * 5.) + position.y,
             position.z,
             1.0
           );
@@ -110,7 +110,7 @@ export default class Playground {
   }
 
   render() {
-    this.time += 0.0005;
+    this.time += 0.01;
     this.uniformData.u_time.value = this.time;
 
     this.renderer.render(this.scene, this.camera);

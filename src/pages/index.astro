@@ -1,9 +1,30 @@
 ---
 import Layout from '@layouts/Layout.astro'
+
+const title = 'Three.js demos'
+
+type Demo = {
+  title: string;
+  url: string;
+}
+
+const demos = [
+  { title: 'Blob', url: '/demos/blob'},
+  { title: 'Terrain', url: '/demos/terrain'},
+  { title: 'Sinus wave', url: '/demos/sinus-wave'},
+  { title: 'Playground', url: '/demos/playground'},
+]
 ---
 
-<Layout title="Hello world" description="Welcome home">
+<Layout title={title} description={title}>
   <main>
-    Hello world
+    <h1 id="heading">{title}</h1>
+    {demos && demos.length > 0 ? 
+      <ul aria-labelledby="heading">    
+        {demos.map((demo: Demo) => (
+          <li><a href={demo.url}>{demo.title}</a></li>
+        ))}
+      </ul>
+     : null} 
   </main>
 </Layout>
