@@ -2,11 +2,11 @@
 @use './mixins/medias.scss' as *;
 
 :root {
-  --system-ui: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --system-ui: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
 }
 
 html {
-  font-family:  var(--system-ui);
+  font-family: var(--system-ui);
   font-size: 1rem;
 }
 
@@ -20,4 +20,8 @@ a {
 
 ul {
   list-style: none;
+}
+
+* {
+  box-sizing: border-box;
 }
