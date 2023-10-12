@@ -1,5 +1,5 @@
 ---
-import Layout from '@layouts/Layout.astro'
+import Layout from '@layouts/PageLayout.astro'
 
 const title = 'Three.js demos'
 
@@ -9,6 +9,7 @@ type Demo = {
 }
 
 const demos = [
+  { title: 'WebGL + HTML (Akella)', url: '/threejs-astro-demos/demos/webgl-html'},
   { title: 'Blob', url: '/threejs-astro-demos/demos/blob'},
   { title: 'Terrain', url: '/threejs-astro-demos/demos/terrain'},
   { title: 'Sinus wave', url: '/threejs-astro-demos/demos/sinus-wave'},

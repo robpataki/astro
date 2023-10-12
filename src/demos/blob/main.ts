@@ -3,7 +3,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
 type ShapeObject = THREE.Object3D<THREE.Object3DEventMap>;
 
-export default class Playground {
+export default class Blob {
   private time = 0;
   private width = 0;
   private height = 0;
@@ -122,6 +122,4 @@ export default class Playground {
   }
 }
 
-new Playground({
-  container: document.querySelector('#container'),
-});
+new Blob({ container: document.querySelector('#container') });

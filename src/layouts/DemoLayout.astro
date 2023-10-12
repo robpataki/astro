@@ -1,9 +1,11 @@
 ---
-import '@styles/global.scss'
+import '../styles/global.scss'
+
+import DemoHeader from '@components/DemoHeader.astro';
 
 export interface Props {
   title: string,
-  description: string;
+  description: string
 }
 
 const { title, description } = Astro.props
@@ -21,8 +23,22 @@ const { title, description } = Astro.props
   </head>
 
   <body>
-    <slot />
+    <DemoHeader title={title} />
+    <main>
+      <slot />
+      <div id="container"></div>
+    </main>
   </body>
 </html>
 
-<script src="@scripts/entry.ts"></script>
+<style lang="scss">
+  #container {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  canvas {
+    display: block;
+  }
+</style>
