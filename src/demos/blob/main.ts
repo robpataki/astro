@@ -58,7 +58,7 @@ export default class Blob {
   }
 
   addObjects() {
-    const geometry = new THREE.SphereGeometry(10, 100, 100);
+    const geometry = new THREE.SphereGeometry(20, 100, 100);
     const material = new THREE.ShaderMaterial({
       wireframe: true,
       uniforms: this.uniformData,

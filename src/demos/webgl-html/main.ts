@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import imagesLoaded from 'imagesloaded';
-import gsap from 'gsap';
 import FontFaceObserver from 'fontfaceobserver';
+import gsap from 'gsap';
 
 import Scroll from './lib/scroll.js';
 
@@ -196,7 +196,12 @@ export default class Sketch {
       let bounds = img.getBoundingClientRect();
 
       let geometry = new THREE.PlaneGeometry(bounds.width, bounds.height, 10, 10);
-      let texture = new THREE.Texture(img);
+
+      // ThreeJS bug (https://github.com/mrdoob/three.js/issues/23164) workaround
+      let imgEl = document.createElement('img');
+      imgEl.src = img.src;
+
+      let texture = new THREE.Texture(imgEl);
       texture.needsUpdate = true;
 
       let material = this.material.clone();
