@@ -239,8 +239,6 @@ export default class Sketch {
         height: bounds.height,
       };
     });
-
-    console.log(this.imageStore);
   }
 
   setPosition() {
