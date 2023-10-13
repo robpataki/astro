@@ -4,6 +4,10 @@ import image1 from './img/1.jpg';
 import image2 from './img/2.jpg';
 import image3 from './img/3.jpg';
 import image4 from './img/4.jpg';
+
+import DemoHeader from '@components/DemoHeader.astro'
+
+const title = 'Merging WebGL and HTML course project';
 ---
 
 <!DOCTYPE html>
@@ -11,7 +15,7 @@ import image4 from './img/4.jpg';
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Merging WebGL and HTML course project</title>
+    <title>{title}</title>
     <meta name="description" content="Enhancing visuals of a simple HTML page using WebGL" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
@@ -29,6 +33,7 @@ import image4 from './img/4.jpg';
     </script> -->
   </head>
   <body>
+    <DemoHeader title={title}/>
     <main>
       <div data-scroll>
         <div class="page">
@@ -187,7 +192,7 @@ import image4 from './img/4.jpg';
 </html>
 
 <style lang="scss">
-  * {
+* {
   margin: 0;
   padding: 0;
 }
