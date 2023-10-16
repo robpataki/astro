@@ -1,0 +1,62 @@
+---
+import Layout from '@layouts/PageLayout.astro'
+
+const title = 'Description list'
+---
+
+<Layout title={title} description={title}>
+  <div class="demo">
+    <h1 id="heading">Front-end technologies</h1>
+    <dl aria-labelledby="heading">
+      <div>
+        <dt>HTML</dt>
+        <dd>HyperText Markup Language</dd>
+      </div>
+      <div>
+        <dt>CSS</dt>
+        <dd>Cascading Style Sheets</dd>
+      </div>
+      <div>
+        <dt>JavaScript</dt>
+        <dd>Add interaction to your websites</dd>
+      </div>  
+      <div>
+        <dt>Git</dt>
+        <dd>Version control</dd>
+      </div>
+    </dl>
+  </div>
+</Layout>
+
+<style lang="scss">
+  .demo {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+
+    h1 {
+      align-self: center;
+    }
+  }
+
+  dl {
+    dt {
+      font-weight: bold;
+      min-width: 5rem;
+    }
+
+    div {
+      margin-bottom: 0.5rem;
+      dt, dd {
+        display: inline-block;
+      }
+    }
+  }
+</style>
