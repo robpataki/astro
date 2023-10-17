@@ -1,40 +1,95 @@
 ---
-import Layout from '@layouts/PageLayout.astro'
+import Layout from '@layouts/PageLayout.astro';
 
-const title = 'Three.js demos'
+const title = 'Demos';
+const BASE_PATH = '/threejs-astro-demos';
+const THREEJS_DEMO_PATH = '/threejs-demos';
+const A11Y_DEMO_PATH = '/a11y-demos';
+const BOS_DEMO_PATH = '/book-of-shaders-demos';
 
 type Demo = {
   title: string;
   url: string;
-}
+};
 
-const demos = [
-  { title: 'Nudge blob', url: '/threejs-astro-demos/demos/nudge-blob'},  
-  { title: 'WebGL + HTML (Akella)', url: '/threejs-astro-demos/demos/webgl-html'},
-  { title: 'Blob', url: '/threejs-astro-demos/demos/blob'},
-  { title: 'Terrain', url: '/threejs-astro-demos/demos/terrain'},
-  { title: 'Sinus wave', url: '/threejs-astro-demos/demos/sinus-wave'},
-  { title: 'Playground', url: '/threejs-astro-demos/demos/playground'},
-]
+const threejsDemos = [
+  { title: 'WebGL + HTML (Akella)', url: `${BASE_PATH}${THREEJS_DEMO_PATH}/webgl-html` },
+  { title: 'Blob', url: `${BASE_PATH}${THREEJS_DEMO_PATH}/blob` },
+  { title: 'Terrain', url: `${BASE_PATH}${THREEJS_DEMO_PATH}/terrain` },
+  { title: 'Sinus wave', url: `${BASE_PATH}${THREEJS_DEMO_PATH}/sinus-wave` },
+  { title: 'Playground', url: `${BASE_PATH}${THREEJS_DEMO_PATH}/playground` },
+  { title: 'Nudge blob (WIP)', url: `${BASE_PATH}${THREEJS_DEMO_PATH}/nudge-blob` },
+];
+
+const bosDemos = [
+  { title: 'Uniforms 01 - gl_FragColor', url: `${BASE_PATH}${BOS_DEMO_PATH}/uniforms-01` },
+  { title: 'Uniforms 02 - gl_FragColor', url: `${BASE_PATH}${BOS_DEMO_PATH}/uniforms-02` },
+];
+
+const a11yDemos = [
+  { title: 'Acronyms', url: `${BASE_PATH}${A11Y_DEMO_PATH}/acronyms` },
+  { title: 'Description list', url: `${BASE_PATH}${A11Y_DEMO_PATH}/description-list` },
+  { title: 'Details', url: `${BASE_PATH}${A11Y_DEMO_PATH}/details` },
+];
 ---
 
 <Layout title={title} description={title}>
   <main>
-    <div id="panel">
-      <h1 id="heading">{title}</h1>
-      {demos && demos.length > 0 ? 
-        <ul aria-labelledby="heading">    
-          {demos.map((demo: Demo) => (
-            <li><a href={demo.url}>{demo.title}</a></li>
-          ))}
-        </ul>
-      : null} 
-     </div>
+    <div class="demo-list-index">
+      <h1>{title}</h1>
+
+      <div class="demo-list-container">
+        {
+          threejsDemos && threejsDemos.length > 0 ? (
+            <div>
+              <h2 id="threejs-demos-heading">Three.js demos</h2>
+              <ul aria-labelledby="threejs-demos-heading">
+                {threejsDemos.map((demo: Demo) => (
+                  <li>
+                    <a href={demo.url}>{demo.title}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : null
+        }
+
+        {
+          bosDemos && bosDemos.length > 0 ? (
+            <div>
+              <h2 id="threejs-demos-heading">Accessibility demos</h2>
+              <ul aria-labelledby="threejs-demos-heading">
+                {bosDemos.map((demo: Demo) => (
+                  <li>
+                    <a href={demo.url}>{demo.title}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : null
+        }
+
+        {
+          a11yDemos && a11yDemos.length > 0 ? (
+            <div>
+              <h2 id="threejs-demos-heading">Accessibility demos</h2>
+              <ul aria-labelledby="threejs-demos-heading">
+                {a11yDemos.map((demo: Demo) => (
+                  <li>
+                    <a href={demo.url}>{demo.title}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : null
+        }
+      </div>
+    </div>
   </main>
 </Layout>
 
 <style lang="scss">
-  #panel {
-    position: relative;
+  ul {
+    padding: 0;
   }
 </style>

@@ -1,0 +1,47 @@
+---
+import Layout from '@layouts/A11yDemoLayout.astro';
+
+const title = 'Acronyms';
+---
+
+<Layout title={title} description={title}>
+  <div class="a11y-demo-container">
+    <h1 id="heading">Acronym examples</h1>
+
+    <form>
+      <div>
+        <label for="emsIDNumber1">EMS ID number</label>
+        <input type="text" name="emsIDNumber1" id="emsIDNumber1" />
+      </div>
+      <br />
+      <div>
+        <label for="emsIDNumber2">
+          <span>E.M.S. ID number</span>
+        </label>
+        <input type="text" name="emsIDNumber2" id="emsIDNumber2" />
+      </div>
+      <br />
+      <div>
+        <label for="emsIDNumber3">
+          <span aria-hidden="true">EMS ID number</span>
+          <span class="visually-hidden">E.M.S. I.D. number</span>
+        </label>
+        <input type="text" name="emsIDNumber3" id="emsIDNumber3" />
+      </div>
+    </form>
+  </div>
+</Layout>
+
+<style lang="scss">
+  label {
+    font-weight: bold;
+    margin-right: 2rem;
+    display: inline-block;
+    width: 10rem;
+  }
+
+  h1 {
+    align-self: center;
+    margin-bottom: 4rem;
+  }
+</style>

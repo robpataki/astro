@@ -36,3 +36,38 @@ ul {
   border: 0 !important;
   white-space: nowrap !important;
 }
+
+.a11y-demo-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.demo-list-index {
+  padding: 1rem;
+}
+
+.demo-list-container {
+  background: rgb(255 0 0 / 10%);
+  display: grid;
+  grid-template-columns: 33.333% 33.333% 33.333%;
+  justify-items: start;
+  grid-row-gap: 1rem;
+  grid-column-gap: 1rem;
+  align-items: start;
+  justify-content: start;
+  align-content: start;
+  grid-auto-flow: row;
+  max-width: 80rem;
+
+  @media screen and (max-width: 40rem) {
+    grid-template-columns: 100%;
+  }
+}
