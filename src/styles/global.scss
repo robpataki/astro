@@ -67,7 +67,7 @@ ul {
   grid-auto-flow: row;
   max-width: 80rem;
 
-  @media screen and (max-width: 40rem) {
+  @media screen and (max-width: 50rem) {
     grid-template-columns: 100%;
   }
 }
