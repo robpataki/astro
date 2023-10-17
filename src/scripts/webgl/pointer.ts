@@ -1,10 +1,28 @@
 let instance: Pointer;
 
+type TPointerProps = {
+  onMove: () => void;
+};
+
+/**
+ * Tracks the pointer in WebGL
+ */
 export default class Pointer {
-  public pointer = { x: 0, y: 0 };
+  /**
+   * Current coordinates
+   * @return {x: number, y: number} The current pointer coordinates.
+   */
+  public coords = { x: 0, y: 0 };
+
+  /**
+   * Current pressed state
+   * @return boolean `true` when the pointer is pressed.
+   */
   public isPressed = false;
 
-  constructor() {
+  private onMoveHandler!: () => void;
+
+  constructor(private options: TPointerProps) {
     if (!window) {
       return;
     }
@@ -17,26 +35,35 @@ export default class Pointer {
     return instance;
   }
 
-  init() {
+  private init() {
+    if (this.options) {
+      this.onMoveHandler = this.options.onMove;
+    }
+
     window.addEventListener('pointermove', this.handlePointerMove.bind(this));
     window.addEventListener('pointerdown', this.handlePointerDown.bind(this));
     window.addEventListener('pointerup', this.handlePointerUp.bind(this));
   }
 
-  handlePointerMove(event: PointerEvent) {
-    this.pointer.x = (event.clientX / window.outerWidth) * 2 - 1;
-    this.pointer.y = -(event.clientY / window.outerHeight) * 2 + 1;
+  private handlePointerMove(event: PointerEvent) {
+    this.coords.x = (event.clientX / window.outerWidth) * 2 - 1;
+    this.coords.y = -(event.clientY / window.outerHeight) * 2 + 1;
+
+    this.onMoveHandler && this.onMoveHandler();
   }
 
-  handlePointerDown() {
+  private handlePointerDown() {
     this.isPressed = true;
   }
 
-  handlePointerUp() {
+  private handlePointerUp() {
     this.isPressed = false;
   }
 
-  public dispose() {
+  /**
+   * Clean up and remove event listeners
+   */
+  dispose() {
     window.removeEventListener('pointermove', this.handlePointerMove);
     window.removeEventListener('pointermove', this.handlePointerDown);
     window.removeEventListener('pointermove', this.handlePointerUp);
