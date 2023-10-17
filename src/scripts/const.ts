@@ -3,3 +3,5 @@
 
 export const SITE_TITLE = "Rob's tree house";
 export const SITE_DESCRIPTION = 'Welcome to my little online space';
+
+export default null;
