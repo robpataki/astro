@@ -1,0 +1,65 @@
+---
+import DemoLayout from '@layouts/ThreeJSDemoLayout.astro';
+import PageLayout from '@layouts/PageLayout.astro';
+
+import SITE_TITLE from '@scripts/const';
+
+export async function getStaticPaths() {
+  const pages = [
+    {
+      slug: undefined,
+      title: 'ThreeJS demos index',
+      description: 'Fun ThreeJS experiments',
+    },
+    {
+      slug: 'blob',
+      title: 'Blob',
+      description: 'A blobby sphere using a vertex shader',
+      scripts: ['../src/demos/blob/main.ts'],
+    },
+    {
+      slug: 'interactive-blob',
+      title: 'Interactive blob',
+      description: 'A blobby sphere using a vertex shader reacting to the pointer position',
+      scripts: ['../src/demos/interactive-blob/main.ts'],
+    },
+    {
+      slug: 'playground',
+      title: 'Playground',
+      text: 'If you want to learn Astro, you must read this book.',
+    },
+  ];
+
+  return pages.map(({ slug, title, description, scripts }) => {
+    console.log(slug, title);
+    return {
+      params: { slug },
+      props: { title, description, scripts },
+    };
+  });
+}
+
+const { title, description, scripts } = Astro.props;
+const { slug } = Astro.params;
+---
+
+{
+  slug ? (
+    <DemoLayout title={`${title} - ${SITE_TITLE}`} description={description}>
+      {scripts
+        ? scripts.map((src?: string) => {
+            console.log(src);
+            return <script is:raw type="module" src={src} />;
+          })
+        : null}
+    </DemoLayout>
+  ) : (
+    <PageLayout title={`${title} - ${SITE_TITLE}`} description={description}>
+      <main>
+        <div class="demo-list-index">
+          <h1>{title}</h1>
+        </div>
+      </main>
+    </PageLayout>
+  )
+}

@@ -77,8 +77,17 @@ export default class Studio {
 
     // Update the uniform values in each shape
     this.shapes.map((shape) => {
-      ((shape as THREE.Mesh).material as THREE.ShaderMaterial).uniforms.u_time.value = this.time;
-      ((shape as THREE.Mesh).material as THREE.ShaderMaterial).uniforms.u_resolution.value = { x: this.width, y: this.height };
+      const shapeWithUniforms = (shape as THREE.Mesh).material as THREE.ShaderMaterial;
+
+      if (shapeWithUniforms.uniforms.u_time) {
+        shapeWithUniforms.uniforms.u_time.value = this.time;
+      }
+      if (shapeWithUniforms.uniforms.u_resolution) {
+        shapeWithUniforms.uniforms.u_resolution.value = { x: this.width, y: this.height };
+      }
+      if (shapeWithUniforms.uniforms.u_mouse) {
+        shapeWithUniforms.uniforms.u_mouse.value = { x: 0, y: 0 };
+      }
     });
 
     this.renderer.render(this.scene, this.camera);
