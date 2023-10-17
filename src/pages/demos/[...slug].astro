@@ -15,13 +15,13 @@ export async function getStaticPaths() {
       slug: 'blob',
       title: 'Blob',
       description: 'A blobby sphere using a vertex shader',
-      scripts: ['../src/demos/blob/main.ts'],
+      scripts: [`../src/demos/blob/main.ts`],
     },
     {
       slug: 'interactive-blob',
       title: 'Interactive blob',
       description: 'A blobby sphere using a vertex shader reacting to the pointer position',
-      scripts: ['../src/demos/interactive-blob/main.ts'],
+      scripts: ['../demos/interactive-blob/main.ts'],
     },
     {
       slug: 'playground',
@@ -45,11 +45,7 @@ const { slug } = Astro.params;
 {
   slug ? (
     <DemoLayout title={`${title} - ${SITE_TITLE}`} description={description}>
-      {scripts
-        ? scripts.map((src?: string) => {
-            return <script is:raw type="module" src={src} />;
-          })
-        : null}
+      <script type="module" src={scripts} />
     </DemoLayout>
   ) : (
     <PageLayout title={`${title} - ${SITE_TITLE}`} description={description}>
