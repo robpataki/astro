@@ -42,9 +42,9 @@ export default class Blob {
 
     this.camera.fov = 2 * Math.atan(this.height / 2 / 1000) * (180 / Math.PI);
 
-    this.scene.add(new THREE.AmbientLight(0xffffff, 0.5));
+    // this.scene.add(new THREE.AmbientLight(0xffffff, 0.5));
 
-    const dirLight = new THREE.DirectionalLight(0xffffff, 1.0);
+    /* const dirLight = new THREE.DirectionalLight(0xffffff, 1.0);
     dirLight.position.x += 40;
     dirLight.position.y += 60;
     dirLight.position.z = -40;
@@ -64,7 +64,7 @@ export default class Blob {
 
     dirLight.shadow.camera.lookAt(0, 0, -30);
     this.scene.add(dirLight);
-    this.scene.add(new THREE.CameraHelper(dirLight.shadow.camera));
+    this.scene.add(new THREE.CameraHelper(dirLight.shadow.camera)); */
 
     this.renderer = new THREE.WebGLRenderer({
       antialias: true,
@@ -97,14 +97,14 @@ export default class Blob {
   }
 
   addObjects() {
-    const geometry = new THREE.PlaneGeometry(40, 40, 10, 10);
-    // const geometry = new THREE.BoxGeometry(40, 40, 20, 20);
+    const geometry = new THREE.PlaneGeometry(40, 40, 100, 100);
+    // const geometry = new THREE.BoxGeometry(40, 40, 100, 100);
     const material = new THREE.ShaderMaterial({
       side: THREE.DoubleSide,
-      // wireframe: true,
+      wireframe: true,
       uniforms: this.uniformData,
       vertexShader: vertex,
-      fragmentShader: fragment,
+      // fragmentShader: fragment,
     });
     this.plane = new THREE.Mesh(geometry, material);
     this.plane.receiveShadow = true;
