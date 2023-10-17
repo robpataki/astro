@@ -46,8 +46,8 @@ export default class Pointer {
   }
 
   private handlePointerMove(event: PointerEvent) {
-    this.coords.x = (event.clientX / window.outerWidth) * 2 - 1;
-    this.coords.y = -(event.clientY / window.outerHeight) * 2 + 1;
+    this.coords.x = (event.clientX / window.innerWidth) * 2 - 1;
+    this.coords.y = -(event.clientY / window.innerHeight) * 2 + 1;
 
     this.onMoveHandler && this.onMoveHandler();
   }
