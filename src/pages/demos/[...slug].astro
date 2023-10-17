@@ -2,7 +2,7 @@
 import DemoLayout from '@layouts/ThreeJSDemoLayout.astro';
 import PageLayout from '@layouts/PageLayout.astro';
 
-import SITE_TITLE from '@scripts/const';
+import { SITE_TITLE } from '@scripts/const';
 
 export async function getStaticPaths() {
   const pages = [
@@ -31,7 +31,6 @@ export async function getStaticPaths() {
   ];
 
   return pages.map(({ slug, title, description, scripts }) => {
-    console.log(slug, title);
     return {
       params: { slug },
       props: { title, description, scripts },
@@ -48,7 +47,6 @@ const { slug } = Astro.params;
     <DemoLayout title={`${title} - ${SITE_TITLE}`} description={description}>
       {scripts
         ? scripts.map((src?: string) => {
-            console.log(src);
             return <script is:raw type="module" src={src} />;
           })
         : null}

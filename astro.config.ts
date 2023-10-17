@@ -1,10 +1,11 @@
 import { defineConfig } from 'astro/config';
 import glsl from 'vite-plugin-glsl';
+import { BASE_URL } from './src/scripts/const';
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://robpataki.github.io',
-  base: '/threejs-astro-demos',
+  base: BASE_URL,
   server: {
     host: true,
   },
