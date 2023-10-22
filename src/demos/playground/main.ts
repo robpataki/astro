@@ -356,7 +356,8 @@ export default class Playground {
     }
   }
 }
-
-new Playground({
-  container: document.querySelector('#container'),
-});
+if (document) {
+  new Playground({
+    container: document.querySelector('#container'),
+  });
+}

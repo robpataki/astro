@@ -1,8 +1,15 @@
 ---
+import type { AstroInstance } from 'astro';
 import DemoLayout from '@layouts/ThreeJSDemoLayout.astro';
 import PageLayout from '@layouts/PageLayout.astro';
 
 import { SITE_TITLE } from '@scripts/const';
+
+const COMPONENT_BASE_PATH = '/src/demos/'; // Can't use variable in string literal with import glob
+const demoComponents = await Astro.glob(`/src/demos/**/*.astro`);
+console.log('demoComponents: ', demoComponents);
+
+export const prerender = true;
 
 export async function getStaticPaths() {
   const pages = [
@@ -15,43 +22,64 @@ export async function getStaticPaths() {
       slug: 'blob',
       title: 'Blob',
       description: 'A blobby sphere using a vertex shader',
-      scripts: [`../src/demos/blob/main.ts`],
-    },
-    {
-      slug: 'interactive-blob',
-      title: 'Interactive blob',
-      description: 'A blobby sphere using a vertex shader reacting to the pointer position',
-      scripts: ['../demos/interactive-blob/main.ts'],
+      componentId: `blob/index.astro`,
     },
     {
       slug: 'playground',
       title: 'Playground',
-      text: 'If you want to learn Astro, you must read this book.',
+      description: 'A bunch of predefined ThreeJS shapes',
+      componentId: `playground/index.astro`,
     },
   ];
 
-  return pages.map(({ slug, title, description, scripts }) => {
+  return pages.map(({ slug, title, description, componentId }) => {
     return {
       params: { slug },
-      props: { title, description, scripts },
+      props: { title, description, componentId, pages },
     };
   });
 }
 
-const { title, description, scripts } = Astro.props;
+const { title, description, componentId, pages } = Astro.props;
 const { slug } = Astro.params;
+
+// Find matching component based on component ID
+const DemoComponent = demoComponents.find((component: AstroInstance) => {
+  const componentDefault = component.default;
+  const moduleId = componentDefault.moduleId!!;
+  const startIndex = moduleId?.indexOf(COMPONENT_BASE_PATH) + COMPONENT_BASE_PATH.length || 0;
+  const endIndex = moduleId?.length;
+  const foundMatchingComponent = moduleId?.substring(startIndex, endIndex).indexOf(componentId) === 0;
+  console.log(moduleId, componentId, foundMatchingComponent);
+  return foundMatchingComponent;
+});
+
+console.log('DemoComponent: ', DemoComponent);
 ---
 
 {
   slug ? (
     <DemoLayout title={`${title} - ${SITE_TITLE}`} description={description}>
-      <script type="module" src={scripts} />
+      {DemoComponent ? <DemoComponent.default /> : null}
     </DemoLayout>
   ) : (
     <PageLayout title={`${title} - ${SITE_TITLE}`} description={description}>
       <main>
         <div class="demo-list-index">
           <h1>{title}</h1>
+
+          <div class="demo-list-container">
+            <h2 id="threejs-demos-heading">Three.js demos</h2>
+            <ul aria-labelledby="threejs-demos-heading">
+              {pages.map((page: { slug: string; title: string }) => {
+                return (
+                  <li>
+                    <a href={`${page.slug}`}>{page.title}</a>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
         </div>
       </main>
     </PageLayout>
