@@ -358,6 +358,6 @@ export default class Playground {
 }
 if (document) {
   new Playground({
-    container: document.querySelector('#container'),
+    container: document.querySelector('#playground-demo-container'),
   });
 }

@@ -27,19 +27,7 @@ const { title, description } = Astro.props;
     <DemoHeader title={title} />
     <main>
       <slot />
-      <div id="container"></div>
+      <!-- <div id="container"></div> -->
     </main>
   </body>
 </html>
-
-<style lang="scss">
-  #container {
-    position: absolute;
-    width: 100vw;
-    height: 100vh;
-  }
-
-  canvas {
-    display: block;
-  }
-</style>

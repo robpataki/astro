@@ -122,6 +122,4 @@ export default class Blob {
   }
 }
 
-if (document) {
-  new Blob({ container: document.querySelector('#container') });
-}
+new Blob({ container: document.querySelector('#blob-demo-container') });

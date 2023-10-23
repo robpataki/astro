@@ -1,4 +1,6 @@
 ---
+import demoIndex from '@demos/index.json';
+
 import type { AstroInstance } from 'astro';
 import DemoLayout from '@layouts/ThreeJSDemoLayout.astro';
 import PageLayout from '@layouts/PageLayout.astro';
@@ -7,11 +9,11 @@ import { SITE_TITLE } from '@scripts/const';
 
 const COMPONENT_BASE_PATH = '/src/demos/'; // Can't use variable in string literal with import glob
 const demoComponents = await Astro.glob(`/src/demos/**/*.astro`);
-console.log('demoComponents: ', demoComponents);
 
 export const prerender = true;
 
 export async function getStaticPaths() {
+  // const pages = demoIndex.demos;
   const pages = [
     {
       slug: undefined,
@@ -50,11 +52,8 @@ const DemoComponent = demoComponents.find((component: AstroInstance) => {
   const startIndex = moduleId?.indexOf(COMPONENT_BASE_PATH) + COMPONENT_BASE_PATH.length || 0;
   const endIndex = moduleId?.length;
   const foundMatchingComponent = moduleId?.substring(startIndex, endIndex).indexOf(componentId) === 0;
-  console.log(moduleId, componentId, foundMatchingComponent);
   return foundMatchingComponent;
 });
-
-console.log('DemoComponent: ', DemoComponent);
 ---
 
 {
@@ -72,11 +71,11 @@ console.log('DemoComponent: ', DemoComponent);
             <h2 id="threejs-demos-heading">Three.js demos</h2>
             <ul aria-labelledby="threejs-demos-heading">
               {pages.map((page: { slug: string; title: string }) => {
-                return (
+                return page.slug ? (
                   <li>
                     <a href={`${page.slug}`}>{page.title}</a>
                   </li>
-                );
+                ) : null;
               })}
             </ul>
           </div>

@@ -71,3 +71,13 @@ ul {
     grid-template-columns: 100%;
   }
 }
+
+.demo-container {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+
+  canvas {
+    display: block;
+  }
+}
