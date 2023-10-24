@@ -3,7 +3,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
 type ShapeObject = THREE.Object3D<THREE.Object3DEventMap>;
 
-console.log('yoyoyo!');
+console.log('[blob]');
 
 export default class Blob {
   private time = 0;

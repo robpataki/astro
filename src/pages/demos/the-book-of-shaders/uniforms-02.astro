@@ -1,0 +1,11 @@
+---
+import DemoLayout from '@layouts/ThreeJSDemoLayout.astro';
+
+import { SITE_TITLE } from '@scripts/const';
+export const title = 'Uniforms 02 - gl_FragCoords';
+export const description = 'Uniforms 02 - gl_FragCoords';
+---
+
+<DemoLayout title={`${title} - ${SITE_TITLE}`} description={description}>
+  <script src="../../../demos/the-book-of-shaders/uniforms-02/main.ts"></script>
+</DemoLayout>

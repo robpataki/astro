@@ -2,13 +2,13 @@
 import PageLayout from '@layouts/PageLayout.astro';
 import DemoHeader from '@components/DemoHeader.astro';
 
-const modules = import.meta.glob('/src/pages/demos/threejs-playground/*.astro', { eager: false });
-const title = 'Three.js playground';
+const modules = import.meta.glob('../../../pages/demos/accessibility/*.astro', { eager: false });
+const title = 'Accessibility';
 
 console.log('modules: ', modules);
 ---
 
-<PageLayout title={title} description="Three js demos">
+<PageLayout title={title} description="Accessibility demos">
   <DemoHeader title={title} isScrolling />
   <main>
     <div class="demo-list-index">

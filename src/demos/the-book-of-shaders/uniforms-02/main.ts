@@ -19,7 +19,7 @@ const createShapes = () => {
 };
 
 const studio = new Studio({
-  container: document.querySelector('#container'),
+  container: document.querySelector('#demo-container'),
 });
 
 const shapes = createShapes();

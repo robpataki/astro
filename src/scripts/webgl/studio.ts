@@ -19,6 +19,7 @@ export default class Studio {
 
   constructor(private options: { container: HTMLElement | null; timeUnit?: number }) {
     if (!this.options.container) {
+      console.warn('[studio] - container element is undefined');
       return;
     }
     this.container = this.options.container;
