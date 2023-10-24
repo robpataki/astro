@@ -10,7 +10,7 @@ export interface Props {
 }
 
 const { title, id } = Astro.props;
-const demoScriptSource = '../demos/blob/main.ts';
+const demoScriptSource = '../demos/threejs-playground/01-blob/main.ts';
 ---
 
 <!doctype html>
@@ -33,10 +33,10 @@ const demoScriptSource = '../demos/blob/main.ts';
       <script src={`${demoScriptSource}`}></script>
 
       <!-- This one works (entry JS is generated and added to the head) -->
-      <script src="../demos/blob/main.ts"></script>
+      <script src="../demos/threejs-playground/01-blob/main.ts"></script>
 
       <!-- This one stays as TS in the body -->
-      {id ? <Fragment>{id === 'demo-1' ? <script src="../demos/blob/main.ts" /> : null}</Fragment> : null}
+      {id ? <Fragment>{id === 'demo-1' ? <script src="../demos/threejs-playground/01-blob/main.ts" /> : null}</Fragment> : null}
     </main>
   </body>
 </html>

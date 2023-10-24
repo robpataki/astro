@@ -283,5 +283,5 @@ export default class Sketch {
 }
 
 new Sketch({
-  container: document.querySelector('#container'),
+  container: document.querySelector('#sketch-container'),
 });

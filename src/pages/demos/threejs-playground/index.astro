@@ -1,5 +1,6 @@
 ---
 import PageLayout from '@layouts/PageLayout.astro';
+import DemoHeader from '@components/DemoHeader.astro';
 
 const modules = import.meta.glob('../../../pages/demos/threejs-playground/*.astro', { eager: false });
 const title = 'Three.js playground';
@@ -8,6 +9,7 @@ console.log('modules: ', modules);
 ---
 
 <PageLayout title={title} description="Three js demos">
+  <DemoHeader title={title} />
   <main>
     <div class="demo-list-index">
       {
