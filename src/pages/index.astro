@@ -43,7 +43,7 @@ const a11yDemos = [
           threejsDemos && threejsDemos.length > 0 ? (
             <div>
               <h2 id="threejs-demos-heading">Three.js demos</h2>
-              <ul aria-labelledby="threejs-demos-heading">
+              <ul aria-labelledby="threejs-demos-heading" class="demo-list">
                 {threejsDemos.map((demo: Demo) => (
                   <li>
                     <a href={demo.url}>{demo.title}</a>

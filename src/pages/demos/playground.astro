@@ -1,0 +1,12 @@
+---
+import DemoLayout from '@layouts/ThreeJSDemoLayout.astro';
+
+import { SITE_TITLE } from '@scripts/const';
+const title = 'Shapes';
+const description = 'A bunch of shapes scattered in 3D space';
+console.log('Hello world!');
+---
+
+<DemoLayout title={`${title} - ${SITE_TITLE}`} description={description}>
+  <script src="../../demos/playground/main.ts"></script>
+</DemoLayout>

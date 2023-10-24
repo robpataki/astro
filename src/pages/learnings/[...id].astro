@@ -1,0 +1,34 @@
+---
+import DemoLayout from '@layouts/DemoLayout.astro';
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+  const demos = [
+    { id: undefined, title: 'List page' },
+    { id: 'demo-1', title: 'Demo page 1', component: './demos/blob/main.ts' },
+    { id: 'demo-2', title: 'Demo page 2' },
+    { id: 'demo-3', title: 'Demo page 3' },
+  ];
+
+  return demos.map((demo) => {
+    const { id, title, component } = demo;
+
+    return {
+      params: {
+        id,
+      },
+
+      props: {
+        title,
+        component,
+      },
+    };
+  });
+}
+
+const { title } = Astro.props;
+const { id } = Astro.params;
+---
+
+<DemoLayout {...{ id, title }}>Hello layout</DemoLayout>
