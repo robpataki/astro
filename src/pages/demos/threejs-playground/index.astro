@@ -1,0 +1,33 @@
+---
+import PageLayout from '@layouts/PageLayout.astro';
+
+const modules = import.meta.glob('../../../pages/demos/threejs-playground/*.astro', { eager: false });
+const title = 'Three.js playground';
+
+console.log('modules: ', modules);
+---
+
+<PageLayout title={title} description="Three js demos">
+  <main>
+    <div class="demo-list-index">
+      {
+        modules ? (
+          <div class="demo-list-container">
+            <h1>{title}</h1>
+            <ul class="demo-list">
+              {Object.keys(modules).map((module) => {
+                const slug = module.substring(module.indexOf('./') + 2, module.indexOf('.astro'));
+
+                return (
+                  <li>
+                    <a href={slug}>{module}</a>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        ) : null
+      }
+    </div>
+  </main>
+</PageLayout>

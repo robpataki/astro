@@ -1,0 +1,11 @@
+---
+import DemoLayout from '@layouts/ThreeJSDemoLayout.astro';
+
+import { SITE_TITLE } from '@scripts/const';
+export const title = 'Interactive blob';
+export const description = 'A sphere with morphing verteces - the mouse coordinates make it go a bit crazy';
+---
+
+<DemoLayout title={`${title} - ${SITE_TITLE}`} description={description}>
+  <script src="../../../demos/threejs-playground/05-interactive-blob/main.ts"></script>
+</DemoLayout>

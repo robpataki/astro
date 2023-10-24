@@ -51,8 +51,9 @@ ul {
 }
 
 .demo-list {
+  padding: 0;
   li:not(:last-child) {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
   }
 
   a {
@@ -79,6 +80,7 @@ ul {
     align-content: start;
     grid-auto-flow: row;
     max-width: 80rem;
+    padding: 1rem 2rem;
 
     @media screen and (max-width: 50rem) {
       grid-template-columns: 100%;
