@@ -2,7 +2,7 @@
 import PageLayout from '@layouts/PageLayout.astro';
 import DemoHeader from '@components/DemoHeader.astro';
 
-const modules = import.meta.glob('../../../pages/demos/accessibility/*.astro', { eager: false });
+const modules = import.meta.glob('/src/pages/demos/accessibility/*.astro', { eager: false });
 const title = 'Accessibility';
 
 console.log('modules: ', modules);
@@ -18,11 +18,11 @@ console.log('modules: ', modules);
             <h1>{title}</h1>
             <ul class="demo-list">
               {Object.keys(modules).map((module) => {
-                const slug = module.substring(module.indexOf('./') + 2, module.indexOf('.astro'));
+                const slug = module.substring(module.indexOf('/src/pages/demos/accessibility/') + 31, module.indexOf('.astro'));
 
                 return (
                   <li>
-                    <a href={slug}>{module}</a>
+                    <a href={`accessibility/${slug}`}>{slug}</a>
                   </li>
                 );
               })}

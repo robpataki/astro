@@ -16,11 +16,11 @@ const title = 'The book of shaders';
             <h1>{title}</h1>
             <ul class="demo-list">
               {Object.keys(modules).map((module) => {
-                const slug = module.substring(module.indexOf('./') + 2, module.indexOf('.astro'));
+                const slug = module.substring(module.indexOf('/src/pages/demos/the-book-of-shaders/') + 37, module.indexOf('.astro'));
 
                 return (
                   <li>
-                    <a href={slug}>{module}</a>
+                    <a href={`the-book-of-shaders/${slug}`}>{slug}</a>
                   </li>
                 );
               })}

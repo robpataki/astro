@@ -1,0 +1,77 @@
+---
+import Layout from '@layouts/PageLayout.astro';
+import { BASE_URL } from '@scripts/const';
+
+const title = 'Demos';
+const THREEJS_DEMO_PATH = '/demos/threejs-playground';
+const A11Y_DEMO_PATH = '/demos/accessibility';
+const BOS_DEMO_PATH = '/demos/the-book-of-shaders';
+
+type Demo = {
+  title: string;
+  url: string;
+};
+
+const threejsDemos = [
+  { title: 'WebGL + HTML (Akella course)', url: `${BASE_URL}${THREEJS_DEMO_PATH}/00-webgl-html` },
+  { title: 'Blob', url: `${BASE_URL}${THREEJS_DEMO_PATH}/01-blob` },
+  { title: 'Shapes', url: `${BASE_URL}${THREEJS_DEMO_PATH}/02-shapes` },
+  { title: 'Sinus wave', url: `${BASE_URL}${THREEJS_DEMO_PATH}/03-sinus-wave` },
+  { title: 'Terrain', url: `${BASE_URL}${THREEJS_DEMO_PATH}/04-terrain` },
+  { title: 'Interactive blob (WIP)', url: `${BASE_URL}${THREEJS_DEMO_PATH}/05-interactive-blob` },
+];
+
+const bosDemos = [
+  { title: 'Uniforms 01 - gl_FragColor', url: `${BASE_URL}${BOS_DEMO_PATH}/uniforms-01` },
+  { title: 'Uniforms 02 - gl_FragColor', url: `${BASE_URL}${BOS_DEMO_PATH}/uniforms-02` },
+];
+
+const a11yDemos = [
+  { title: 'Acronyms', url: `${BASE_URL}${A11Y_DEMO_PATH}/acronyms` },
+  { title: 'Description list', url: `${BASE_URL}${A11Y_DEMO_PATH}/description-list` },
+  { title: 'Details', url: `${BASE_URL}${A11Y_DEMO_PATH}/details` },
+];
+
+const demos = [
+  {
+    data: threejsDemos,
+    title: 'Three.js playground',
+  },
+  { data: bosDemos, title: 'The Book of Shaders demos' },
+  { data: a11yDemos, title: 'Accessibility demos' },
+];
+---
+
+<Layout title={title} description={title}>
+  <main>
+    <div class="demo-list-index">
+      <h1>{title}</h1>
+
+      {
+        demos && demos.length > 0 ? (
+          <div class="demo-list-container">
+            {demos.map((demoObj) => (
+              <div>
+                <h2 id="threejs-demos-heading">{demoObj.title}</h2>
+
+                <ul aria-labelledby="threejs-demos-heading" class="demo-list">
+                  {demoObj.data?.map((demo: Demo) => (
+                    <li>
+                      <a href={demo.url}>{demo.title}</a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        ) : null
+      }
+    </div>
+  </main>
+</Layout>
+
+<style lang="scss">
+  ul {
+    padding: 0;
+  }
+</style>

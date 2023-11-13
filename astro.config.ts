@@ -22,4 +22,8 @@ export default defineConfig({
       cssCodeSplit: false,
     },
   },
+  redirects: {
+    '/': '/astro',
+    '/astro': '/astro/demos',
+  },
 });

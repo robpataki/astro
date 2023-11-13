@@ -4,8 +4,6 @@ import DemoHeader from '@components/DemoHeader.astro';
 
 const modules = import.meta.glob('/src/pages/demos/threejs-playground/*.astro', { eager: false });
 const title = 'Three.js playground';
-
-console.log('modules: ', modules);
 ---
 
 <PageLayout title={title} description="Three js demos">
@@ -18,11 +16,11 @@ console.log('modules: ', modules);
             <h1>{title}</h1>
             <ul class="demo-list">
               {Object.keys(modules).map((module) => {
-                const slug = module.substring(module.indexOf('./') + 2, module.indexOf('.astro'));
+                const slug = module.substring(module.indexOf('/src/pages/demos/threejs-playground/') + 36, module.indexOf('.astro'));
 
                 return (
                   <li>
-                    <a href={slug}>{module}</a>
+                    <a href={`threejs-playground/${slug}`}>{slug}</a>
                   </li>
                 );
               })}
