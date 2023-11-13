@@ -23,7 +23,6 @@ export default defineConfig({
     },
   },
   redirects: {
-    '/': '/astro',
     '/astro': '/astro/demos',
   },
 });
